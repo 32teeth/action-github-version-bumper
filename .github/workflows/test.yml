@@ -10,13 +10,13 @@ jobs:
     name: Test Bump Tag Action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Bump Tag Action
         uses: ./
         id: bump_tag
         with:
-          onlyTagNumber: true # Match the input name in your action
-          tag: "v1.0.0" # Provide a tag input for testing
+          numbers_only: true
+          tag: "v1.0.0"
       - name: Output New Tag
         run: echo "New tag version is ${{ steps.bump_tag.outputs.tag }}"
       - name: Verify Tag Format

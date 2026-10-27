@@ -3,7 +3,7 @@ const core = require("@actions/core")
 const main = async () => {
   try {
     let tag = core.getInput("tag") || process.env.GITHUB_REF?.replace(/^refs\/tags\//, "")
-    const onlyTagNumber = core.getInput("onlyTagNumber") === "true" || process.env.INPUT_NUMBERS_ONLY === "true"
+    const onlyTagNumber = core.getInput("numbers_only") === "true"
 
     if (!tag) {
       throw new Error("Tag input is required")
@@ -29,7 +29,6 @@ const main = async () => {
     const outputTag = onlyTagNumber ? newTag : `v${newTag}`
 
     core.setOutput("tag", outputTag)
-    console.log(`::set-output name=tag::${outputTag}`) // For compatibility with workflow output
   } catch (error) {
     core.setFailed(error.message)
     process.exit(1)

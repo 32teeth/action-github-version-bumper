@@ -4,6 +4,9 @@ branding:
   icon: tag
   color: gray-dark
 inputs:
+  tag:
+    required: false
+    description: Tag to bump (for example, v1.0.0)
   numbers_only:
     required: false
     default: false
